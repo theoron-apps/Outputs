@@ -53,6 +53,10 @@ struct AppsTab: View {
         return GeometryReader { geometry in
             let width = geometry.size.width
             ZStack(alignment: .topLeading) {
+                Color.clear
+                    .frame(width: width, height: height)
+                    .contentShape(Rectangle())
+                    .gesture(cableGesture(width: width))
                 VStack(spacing: spacing) {
                     ForEach(Array(apps.enumerated()), id: \.element.id) { index, app in
                         appRow(app, index: index, width: width)
@@ -83,7 +87,6 @@ struct AppsTab: View {
                 .allowsHitTesting(false)
             }
             .coordinateSpace(name: "patch")
-            .simultaneousGesture(cableGesture(width: width))
         }
         .frame(height: height)
     }
@@ -134,6 +137,10 @@ struct AppsTab: View {
                 guard let outputIndex = outputs.firstIndex(of: uid) else { continue }
                 let start = appPort(appIndex)
                 let end = outputPort(outputIndex, width: width)
+                let endDistance = hypot(end.x - point.x, end.y - point.y)
+                if endDistance < 18, endDistance < (best?.1 ?? .infinity) {
+                    best = (Drag(bundleID: app.bundleID, from: uid, point: point), endDistance)
+                }
                 for step in 4...40 {
                     let sample = bezier(start, end, CGFloat(step) / 40)
                     let distance = hypot(sample.x - point.x, sample.y - point.y)
@@ -217,6 +224,8 @@ struct AppsTab: View {
             .onTapGesture(count: 2) { model.setAppVolume(1, for: app.bundleID) }
             JackView(size: 18)
                 .padding(.trailing, 5)
+                .contentShape(Rectangle())
+                .gesture(cableGesture(width: width))
         }
         .padding(.leading, 10)
         .frame(width: appWidth, height: rowHeight)
