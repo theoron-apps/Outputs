@@ -1,0 +1,2278 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@ · %@ %lld MS · %@ %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@ %3$lld MS · %4$@ %5$lld"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ · %@ %lld MS · %@ %lld"
+          }
+        }
+      }
+    },
+    "%@ бета" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ beta"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ бета"
+          }
+        }
+      }
+    },
+    "%@ бета %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ beta %2$lld"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ бета %lld"
+          }
+        }
+      }
+    },
+    "%@: %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@: %2$lld"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@: %lld"
+          }
+        }
+      }
+    },
+    "%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "%lld dB" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld dB"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld dB"
+          }
+        }
+      }
+    },
+    "%lld%%" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld%%"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld%%"
+          }
+        }
+      }
+    },
+    "+ ДОБАВИТЬ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+ ADD"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+ ДОБАВИТЬ"
+          }
+        }
+      }
+    },
+    "+ ДОБАВИТЬ ВЫХОД" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+ ADD OUTPUT"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+ ДОБАВИТЬ ВЫХОД"
+          }
+        }
+      }
+    },
+    "+%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld"
+          }
+        }
+      }
+    },
+    "AIRPLAY" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AIRPLAY"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AIRPLAY"
+          }
+        }
+      }
+    },
+    "BT" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BT"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BT"
+          }
+        }
+      }
+    },
+    "Bluetooth и AirPlay звучат позже проводных. Outputs задерживает быстрые выходы, чтобы все играли вместе. Задержка запоминается для каждого набора устройств." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bluetooth and AirPlay play later than wired outputs. Outputs delays the faster ones so everything plays together. Delays are remembered for each set of devices."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bluetooth и AirPlay звучат позже проводных. Outputs задерживает быстрые выходы, чтобы все играли вместе. Задержка запоминается для каждого набора устройств."
+          }
+        }
+      }
+    },
+    "Bluetooth не отстаёт: выходы выравниваются сами, а тонкая подстройка запоминается для каждого набора устройств" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bluetooth doesn't lag: outputs line up on their own, and fine-tuning is remembered for each set of devices"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bluetooth не отстаёт: выходы выравниваются сами, а тонкая подстройка запоминается для каждого набора устройств"
+          }
+        }
+      }
+    },
+    "HDMI" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HDMI"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HDMI"
+          }
+        }
+      }
+    },
+    "JACK" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JACK"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JACK"
+          }
+        }
+      }
+    },
+    "MAC" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MAC"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MAC"
+          }
+        }
+      }
+    },
+    "MS" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MS"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MS"
+          }
+        }
+      }
+    },
+    "MS·A" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MS·A"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MS·A"
+          }
+        }
+      }
+    },
+    "OUTPUTS" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OUTPUTS"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OUTPUTS"
+          }
+        }
+      }
+    },
+    "OUTPUTS %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OUTPUTS %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OUTPUTS %@"
+          }
+        }
+      }
+    },
+    "OUTPUTS · ТОЛЬКО СИСТЕМНЫЙ ЗВУК" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OUTPUTS · SYSTEM AUDIO ONLY"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OUTPUTS · ТОЛЬКО СИСТЕМНЫЙ ЗВУК"
+          }
+        }
+      }
+    },
+    "Outputs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs"
+          }
+        }
+      }
+    },
+    "Outputs · Настройки" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs · Settings"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs · Настройки"
+          }
+        }
+      }
+    },
+    "Outputs закроется и откроет образ диска. Перетащите Outputs в папку «Программы» и выберите «Заменить»: ваши настройки сохранятся." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs will quit and open the disk image. Drag Outputs to Applications and choose Replace. Your settings are kept."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs закроется и откроет образ диска. Перетащите Outputs в папку «Программы» и выберите «Заменить»: ваши настройки сохранятся."
+          }
+        }
+      }
+    },
+    "Outputs играет звук Mac сразу в несколько наушников и колонок: Bluetooth, проводные, AirPlay, HDMI. У каждого своя громкость, задержка и эквалайзер." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs plays your Mac's sound on several headphones and speakers at once: Bluetooth, wired, AirPlay, HDMI. Each has its own volume, delay and equalizer."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs играет звук Mac сразу в несколько наушников и колонок: Bluetooth, проводные, AirPlay, HDMI. У каждого своя громкость, задержка и эквалайзер."
+          }
+        }
+      }
+    },
+    "Outputs раз в день проверяет новые версии на GitHub." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs checks GitHub for new versions once a day."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs раз в день проверяет новые версии на GitHub."
+          }
+        }
+      }
+    },
+    "USB" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USB"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USB"
+          }
+        }
+      }
+    },
+    "VIRT" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VIRT"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VIRT"
+          }
+        }
+      }
+    },
+    "АВТО" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AUTO"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "АВТО"
+          }
+        }
+      }
+    },
+    "БАС+" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BASS+"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "БАС+"
+          }
+        }
+      }
+    },
+    "ВЕРНУТЬ АВТО" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BACK TO AUTO"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ВЕРНУТЬ АВТО"
+          }
+        }
+      }
+    },
+    "ВЕРСИЯ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VERSION"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ВЕРСИЯ"
+          }
+        }
+      }
+    },
+    "ВКЛ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ON"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ВКЛ"
+          }
+        }
+      }
+    },
+    "ВСЕ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ALL"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ВСЕ"
+          }
+        }
+      }
+    },
+    "ВЫДЕРНУТ · ВСТАВЬТЕ ШТЕКЕР" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UNPLUGGED · PLUG IT BACK"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ВЫДЕРНУТ · ВСТАВЬТЕ ШТЕКЕР"
+          }
+        }
+      }
+    },
+    "ВЫЙТИ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QUIT"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ВЫЙТИ"
+          }
+        }
+      }
+    },
+    "ВЫЙТИ ИЗ OUTPUTS" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QUIT OUTPUTS"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ВЫЙТИ ИЗ OUTPUTS"
+          }
+        }
+      }
+    },
+    "ВЫКЛ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OFF"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ВЫКЛ"
+          }
+        }
+      }
+    },
+    "ВЫКЛЮЧЕНО" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OFF"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ВЫКЛЮЧЕНО"
+          }
+        }
+      }
+    },
+    "ВЫХОД ОТКЛЮЧИЛСЯ: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OUTPUT DISCONNECTED: %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ВЫХОД ОТКЛЮЧИЛСЯ: %@"
+          }
+        }
+      }
+    },
+    "ВЫХОДЫ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OUTPUTS"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ВЫХОДЫ"
+          }
+        }
+      }
+    },
+    "Включите музыку или видео — приложение со звуком появится здесь." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Play music or a video and the app will appear here."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включите музыку или видео — приложение со звуком появится здесь."
+          }
+        }
+      }
+    },
+    "Включить" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn On"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включить"
+          }
+        }
+      }
+    },
+    "Все выходы уже добавлены" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All outputs are already added"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все выходы уже добавлены"
+          }
+        }
+      }
+    },
+    "Выберите выходы" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose outputs"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите выходы"
+          }
+        }
+      }
+    },
+    "Выберите наушники и колонки, в которые Mac будет играть одновременно." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the headphones and speakers your Mac will play to at the same time."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите наушники и колонки, в которые Mac будет играть одновременно."
+          }
+        }
+      }
+    },
+    "Выдерните штекер из гнезда — звук в этом выходе останавливается, как пластинка, а вставите обратно — раскручивается" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pull a plug out of its jack and that output stops like a record; plug it back in and it spins up again"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выдерните штекер из гнезда — звук в этом выходе останавливается, как пластинка, а вставите обратно — раскручивается"
+          }
+        }
+      }
+    },
+    "Выйти из Outputs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quit Outputs"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выйти из Outputs"
+          }
+        }
+      }
+    },
+    "Выключить" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn Off"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выключить"
+          }
+        }
+      }
+    },
+    "ГАЙД ПЕРВОГО ЗАПУСКА" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WELCOME GUIDE"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ГАЙД ПЕРВОГО ЗАПУСКА"
+          }
+        }
+      }
+    },
+    "ГОЛОС" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VOICE"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ГОЛОС"
+          }
+        }
+      }
+    },
+    "ГОТОВО" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DONE"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ГОТОВО"
+          }
+        }
+      }
+    },
+    "Громкость 100%" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volume 100%"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Громкость 100%"
+          }
+        }
+      }
+    },
+    "ДАЛЕЕ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NEXT"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ДАЛЕЕ"
+          }
+        }
+      }
+    },
+    "ДОБАВЛЕНО" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ADDED"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ДОБАВЛЕНО"
+          }
+        }
+      }
+    },
+    "ДОБАВЬТЕ ВЫХОДЫ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ADD OUTPUTS"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ДОБАВЬТЕ ВЫХОДЫ"
+          }
+        }
+      }
+    },
+    "ДОСТУПНА %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ AVAILABLE"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ДОСТУПНА %@"
+          }
+        }
+      }
+    },
+    "ДОСТУПНЫЕ ВЫХОДЫ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AVAILABLE OUTPUTS"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ДОСТУПНЫЕ ВЫХОДЫ"
+          }
+        }
+      }
+    },
+    "Для теста нужны хотя бы два подключённых выхода." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The test needs at least two connected outputs."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для теста нужны хотя бы два подключённых выхода."
+          }
+        }
+      }
+    },
+    "Доступ к звуку" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio access"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Доступ к звуку"
+          }
+        }
+      }
+    },
+    "ЕЩЁ НЕ ПРОВЕРЯЛ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NOT CHECKED YET"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ЕЩЁ НЕ ПРОВЕРЯЛ"
+          }
+        }
+      }
+    },
+    "Живая иконка в меню-баре, светлая и тёмная тема, гайд первого запуска, русский и английский язык" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live menu bar icon, light and dark theme, welcome guide, English and Russian"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Живая иконка в меню-баре, светлая и тёмная тема, гайд первого запуска, русский и английский язык"
+          }
+        }
+      }
+    },
+    "ЗАПУСК ПРИ ВХОДЕ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OPEN AT LOGIN"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ЗАПУСК ПРИ ВХОДЕ"
+          }
+        }
+      }
+    },
+    "ЗАПУСТИТЬ ТЕСТ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "START TEST"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ЗАПУСТИТЬ ТЕСТ"
+          }
+        }
+      }
+    },
+    "ЗАПУСТИТЬ ТЕСТ ЩЕЛЧКАМИ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "START CLICK TEST"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ЗАПУСТИТЬ ТЕСТ ЩЕЛЧКАМИ"
+          }
+        }
+      }
+    },
+    "Задержку Bluetooth Outputs подбирает сам. Чтобы было идеально, пройдите короткий тест щелчками: около 20 секунд." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs sets the Bluetooth delay on its own. For a perfect match, take the short click test: about 20 seconds."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Задержку Bluetooth Outputs подбирает сам. Чтобы было идеально, пройдите короткий тест щелчками: около 20 секунд."
+          }
+        }
+      }
+    },
+    "Звук Mac играет сразу в несколько выходов: Bluetooth и проводные наушники, колонки, AirPlay и HDMI" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Mac's sound plays on several outputs at once: Bluetooth and wired headphones, speakers, AirPlay and HDMI"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Звук Mac играет сразу в несколько выходов: Bluetooth и проводные наушники, колонки, AirPlay и HDMI"
+          }
+        }
+      }
+    },
+    "Звук идёт во все выходы сразу. Порядок задаёт цвет кабеля, первый проводной выход ведёт часы." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sound goes to every output at once. The order sets the cable color, and the first wired output keeps the clock."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Звук идёт во все выходы сразу. Порядок задаёт цвет кабеля, первый проводной выход ведёт часы."
+          }
+        }
+      }
+    },
+    "ИГРАЕТ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PLAYING"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ИГРАЕТ"
+          }
+        }
+      }
+    },
+    "ИГРАЕТ В %lld ВЫХ." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PLAYING ON %lld OUT."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ИГРАЕТ В %lld ВЫХ."
+          }
+        }
+      }
+    },
+    "ИЗМЕНЕНО" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CHANGED"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ИЗМЕНЕНО"
+          }
+        }
+      }
+    },
+    "КАК В СИСТЕМЕ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SYSTEM"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "КАК В СИСТЕМЕ"
+          }
+        }
+      }
+    },
+    "КАК В СИСТЕМЕ ↗" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SYSTEM ↗"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "КАК В СИСТЕМЕ ↗"
+          }
+        }
+      }
+    },
+    "КОНФИДЕНЦИАЛЬНОСТЬ → ЗАПИСЬ ЗВУКА" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PRIVACY → AUDIO RECORDING"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "КОНФИДЕНЦИАЛЬНОСТЬ → ЗАПИСЬ ЗВУКА"
+          }
+        }
+      }
+    },
+    "КУДА ИГРАЕТ MAC" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WHERE YOUR MAC PLAYS"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "КУДА ИГРАЕТ MAC"
+          }
+        }
+      }
+    },
+    "КУДА ИГРАЕТ КАЖДОЕ ПРИЛОЖЕНИЕ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WHERE EACH APP PLAYS"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "КУДА ИГРАЕТ КАЖДОЕ ПРИЛОЖЕНИЕ"
+          }
+        }
+      }
+    },
+    "Каждое приложение можно отправить в свои выходы: протяните кабель на вкладке «Приложения»" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send each app to its own outputs: pull a cable on the Apps tab"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Каждое приложение можно отправить в свои выходы: протяните кабель на вкладке «Приложения»"
+          }
+        }
+      }
+    },
+    "Как по умолчанию" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Default"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Как по умолчанию"
+          }
+        }
+      }
+    },
+    "Клавиши громкости" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volume keys"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Клавиши громкости"
+          }
+        }
+      }
+    },
+    "Клавиши громкости Mac управляют всеми выходами сразу и сохраняют разницу между ними. Громкость отдельного выхода — ручка VOL в панели." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Mac's volume keys control every output at once and keep the difference between them. Each output's own volume is the VOL knob in the panel."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Клавиши громкости Mac управляют всеми выходами сразу и сохраняют разницу между ними. Громкость отдельного выхода — ручка VOL в панели."
+          }
+        }
+      }
+    },
+    "Контрольная сумма файла не совпала, установка отменена" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The file checksum didn't match. Installation canceled"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Контрольная сумма файла не совпала, установка отменена"
+          }
+        }
+      }
+    },
+    "НАЗАД" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BACK"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "НАЗАД"
+          }
+        }
+      }
+    },
+    "НАСТРОЙКИ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SETTINGS"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "НАСТРОЙКИ"
+          }
+        }
+      }
+    },
+    "НЕ ПОДКЛЮЧЕНО" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NOT CONNECTED"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "НЕ ПОДКЛЮЧЕНО"
+          }
+        }
+      }
+    },
+    "НЕ ПОДКЛЮЧЕНО · ВЕРНЁТСЯ САМ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NOT CONNECTED · COMES BACK ON ITS OWN"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "НЕ ПОДКЛЮЧЕНО · ВЕРНЁТСЯ САМ"
+          }
+        }
+      }
+    },
+    "НЕ УДАЛОСЬ ЗАПУСТИТЬ ЗВУК" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "COULDN'T START AUDIO"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "НЕ УДАЛОСЬ ЗАПУСТИТЬ ЗВУК"
+          }
+        }
+      }
+    },
+    "НЕ УДАЛОСЬ ПРОВЕРИТЬ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "COULDN'T CHECK"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "НЕ УДАЛОСЬ ПРОВЕРИТЬ"
+          }
+        }
+      }
+    },
+    "НЕТ ПОДКЛЮЧЁННЫХ ВЫХОДОВ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NO CONNECTED OUTPUTS"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "НЕТ ПОДКЛЮЧЁННЫХ ВЫХОДОВ"
+          }
+        }
+      }
+    },
+    "Наденьте наушники и слушайте щелчки. Выберите выход и крутите ручку, пока щелчки не сольются в один." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Put on your headphones and listen to the clicks. Pick an output and turn the knob until the clicks merge into one."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Наденьте наушники и слушайте щелчки. Выберите выход и крутите ручку, пока щелчки не сольются в один."
+          }
+        }
+      }
+    },
+    "Настройки…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки…"
+          }
+        }
+      }
+    },
+    "Не удалось скачать обновление" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't download the update"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось скачать обновление"
+          }
+        }
+      }
+    },
+    "ОБНОВЛЕНИЕ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UPDATE"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОБНОВЛЕНИЕ"
+          }
+        }
+      }
+    },
+    "ОБНОВЛЕНИЯ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UPDATES"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОБНОВЛЕНИЯ"
+          }
+        }
+      }
+    },
+    "ОСНОВНЫЕ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GENERAL"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОСНОВНЫЕ"
+          }
+        }
+      }
+    },
+    "ОТКРЫТЬ НАСТРОЙКИ ↗" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OPEN SETTINGS ↗"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ОТКРЫТЬ НАСТРОЙКИ ↗"
+          }
+        }
+      }
+    },
+    "Обновление %@ скачано и проверено" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update %@ downloaded and verified"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновление %@ скачано и проверено"
+          }
+        }
+      }
+    },
+    "Один звук — много выходов" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One sound, many outputs"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Один звук — много выходов"
+          }
+        }
+      }
+    },
+    "Отметьте устройства, в которые будет играть Mac. Добавить другие можно позже, в панели в меню-баре." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check the devices your Mac will play to. You can add others later from the menu bar panel."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отметьте устройства, в которые будет играть Mac. Добавить другие можно позже, в панели в меню-баре."
+          }
+        }
+      }
+    },
+    "ПОДКЛЮЧАЮ…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CONNECTING…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОДКЛЮЧАЮ…"
+          }
+        }
+      }
+    },
+    "ПОКАЗАТЬ СНОВА" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SHOW AGAIN"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОКАЗАТЬ СНОВА"
+          }
+        }
+      }
+    },
+    "ПОСЛЕДНЯЯ ВЕРСИЯ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UP TO DATE"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПОСЛЕДНЯЯ ВЕРСИЯ"
+          }
+        }
+      }
+    },
+    "ПРЕСЕТЫ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PRESETS"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПРЕСЕТЫ"
+          }
+        }
+      }
+    },
+    "ПРИЛОЖЕНИЯ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "APPS"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПРИЛОЖЕНИЯ"
+          }
+        }
+      }
+    },
+    "ПРОВЕРИТЬ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CHECK"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПРОВЕРИТЬ"
+          }
+        }
+      }
+    },
+    "ПРОВЕРЯЮ…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CHECKING…"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ПРОВЕРЯЮ…"
+          }
+        }
+      }
+    },
+    "Подгоните синхрон" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fine-tune the sync"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подгоните синхрон"
+          }
+        }
+      }
+    },
+    "Подключили наушники снова — они сами возвращаются в группу, а отключились — звук продолжает играть в остальных" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reconnected headphones rejoin the group on their own, and if they disconnect, sound keeps playing on the rest"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подключили наушники снова — они сами возвращаются в группу, а отключились — звук продолжает играть в остальных"
+          }
+        }
+      }
+    },
+    "Подключите хотя бы один выход." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connect at least one output."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подключите хотя бы один выход."
+          }
+        }
+      }
+    },
+    "Позже" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Later"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Позже"
+          }
+        }
+      }
+    },
+    "Провода живые: провисают, качаются, их можно схватить мышью, а по играющим бегут импульсы" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cables are alive: they sag and swing, you can grab them with the mouse, and pulses run along the ones that are playing"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Провода живые: провисают, качаются, их можно схватить мышью, а по играющим бегут импульсы"
+          }
+        }
+      }
+    },
+    "Проводные" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wired"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проводные"
+          }
+        }
+      }
+    },
+    "Продолжить" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Продолжить"
+          }
+        }
+      }
+    },
+    "Протяните кабель от приложения к выходу. Чтобы отключить, схватите кабель и выдерните его или перетащите на другой выход. Без кабелей приложение играет во все выходы." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pull a cable from an app to an output. To disconnect, grab the cable and pull it out or drag it to another output. Without cables, an app plays on every output."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Протяните кабель от приложения к выходу. Чтобы отключить, схватите кабель и выдерните его или перетащите на другой выход. Без кабелей приложение играет во все выходы."
+          }
+        }
+      }
+    },
+    "Пятиполосный эквалайзер у каждого выхода и пресеты" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A five-band equalizer with presets for each output"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пятиполосный эквалайзер у каждого выхода и пресеты"
+          }
+        }
+      }
+    },
+    "РОВНО" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FLAT"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "РОВНО"
+          }
+        }
+      }
+    },
+    "СВЕТЛАЯ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LIGHT"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "СВЕТЛАЯ"
+          }
+        }
+      }
+    },
+    "СВОЯ ЗАДЕРЖКА" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OWN LATENCY"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "СВОЯ ЗАДЕРЖКА"
+          }
+        }
+      }
+    },
+    "СИНХРОН" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SYNC"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "СИНХРОН"
+          }
+        }
+      }
+    },
+    "СИНХРОНИЗАЦИЯ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SYNC"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "СИНХРОНИЗАЦИЯ"
+          }
+        }
+      }
+    },
+    "СКАЧИВАЮ %lld%%" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DOWNLOADING %lld%%"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "СКАЧИВАЮ %lld%%"
+          }
+        }
+      }
+    },
+    "СОХРАНЁННЫЕ НАБОРЫ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SAVED SETS"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "СОХРАНЁННЫЕ НАБОРЫ"
+          }
+        }
+      }
+    },
+    "Свой у каждого выхода. Тяните ползунок вверх или вниз, двойной щелчок — сброс полосы." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Each output has its own. Drag a slider up or down, double-click to reset a band."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Свой у каждого выхода. Тяните ползунок вверх или вниз, двойной щелчок — сброс полосы."
+          }
+        }
+      }
+    },
+    "Своя громкость у каждого выхода, а клавиши громкости Mac управляют всеми сразу" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Each output has its own volume, and your Mac's volume keys control them all at once"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Своя громкость у каждого выхода, а клавиши громкости Mac управляют всеми сразу"
+          }
+        }
+      }
+    },
+    "Своя громкость у каждого приложения — ручка на вкладке «Приложения»" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Each app has its own volume: a knob on the Apps tab"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Своя громкость у каждого приложения — ручка на вкладке «Приложения»"
+          }
+        }
+      }
+    },
+    "Сначала добавьте выходы на вкладке «Выходы»." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add outputs on the Outputs tab first."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сначала добавьте выходы на вкладке «Выходы»."
+          }
+        }
+      }
+    },
+    "ТЁМНАЯ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DARK"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ТЁМНАЯ"
+          }
+        }
+      }
+    },
+    "ТЕМА" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "THEME"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ТЕМА"
+          }
+        }
+      }
+    },
+    "ТЕСТ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TEST"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ТЕСТ"
+          }
+        }
+      }
+    },
+    "ТЕСТ СИНХРОНИЗАЦИИ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SYNC TEST"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ТЕСТ СИНХРОНИЗАЦИИ"
+          }
+        }
+      }
+    },
+    "ТИХО" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SILENT"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ТИХО"
+          }
+        }
+      }
+    },
+    "Тест синхронизации" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sync Test"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тест синхронизации"
+          }
+        }
+      }
+    },
+    "Тест щелчками: крутите ручку, пока щелчки во всех наушниках не сольются в один" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click test: turn the knob until the clicks in every pair of headphones merge into one"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тест щелчками: крутите ручку, пока щелчки во всех наушниках не сольются в один"
+          }
+        }
+      }
+    },
+    "УДАЛИТЬ" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DELETE"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "УДАЛИТЬ"
+          }
+        }
+      }
+    },
+    "УСТАНОВИТЬ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "INSTALL %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "УСТАНОВИТЬ %@"
+          }
+        }
+      }
+    },
+    "УСТАНОВЛЕНА" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "INSTALLED"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "УСТАНОВЛЕНА"
+          }
+        }
+      }
+    },
+    "Убрать выход" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove Output"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Убрать выход"
+          }
+        }
+      }
+    },
+    "ЧТО НОВОГО" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WHAT'S NEW"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ЧТО НОВОГО"
+          }
+        }
+      }
+    },
+    "Чтобы раздать звук по выходам, Outputs должен его забрать. Когда вы впервые включите Outputs, macOS спросит разрешение — нажмите «Разрешить». Звук никуда не записывается." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To send sound to your outputs, Outputs has to capture it first. The first time you turn Outputs on, macOS asks for permission. Click Allow. Nothing is recorded."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чтобы раздать звук по выходам, Outputs должен его забрать. Когда вы впервые включите Outputs, macOS спросит разрешение — нажмите «Разрешить». Звук никуда не записывается."
+          }
+        }
+      }
+    },
+    "ЭКВАЛАЙЗЕР" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "EQUALIZER"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ЭКВАЛАЙЗЕР"
+          }
+        }
+      }
+    },
+    "ЯЗЫК" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "LANGUAGE"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ЯЗЫК"
+          }
+        }
+      }
+    },
+    "ЯРКО" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BRIGHT"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ЯРКО"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

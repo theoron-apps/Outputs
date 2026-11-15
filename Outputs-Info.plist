@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ODBetaNumber</key>
+	<string>$(BETA_NUMBER)</string>
+	<key>NSAudioCaptureUsageDescription</key>
+	<string>Outputs забирает звук Mac, чтобы одновременно играть его в нескольких наушниках и колонках. Звук никуда не записывается и не сохраняется.</string>
+</dict>
+</plist>

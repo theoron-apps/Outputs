@@ -1,0 +1,23 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "NSAudioCaptureUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs captures your Mac's sound to play it on several headphones and speakers at once. Nothing is recorded or saved."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs забирает звук Mac, чтобы одновременно играть его в нескольких наушниках и колонках. Звук никуда не записывается и не сохраняется."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
