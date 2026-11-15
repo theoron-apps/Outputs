@@ -1,8 +1,15 @@
-# Outputs
+<p align="center"><img src="assets/icon.png" width="128" alt="Outputs"></p>
 
-Play your Mac's sound on several outputs at once: Bluetooth and wired headphones, speakers, AirPlay and HDMI. Each output gets its own volume, delay and equalizer, and Outputs keeps them in sync.
+<h1 align="center">Outputs</h1>
 
-[Русский](README.ru.md)
+<p align="center">Play your Mac's sound on several outputs at once: Bluetooth and wired headphones, speakers, AirPlay and HDMI. Each output gets its own volume, delay and equalizer, and Outputs keeps them in sync.</p>
+
+<p align="center">
+  <a href="https://github.com/theoron-apps/Outputs/releases/latest"><img src="https://img.shields.io/github/v/release/theoron-apps/Outputs?style=flat-square&label=&color=3f7561" alt="Release"></a>
+  <img src="https://img.shields.io/badge/macOS-14.2%2B-555?style=flat-square" alt="macOS 14.2+">
+</p>
+
+<p align="center">[Русский](README.ru.md)</p>
 
 ## Features
 

@@ -1,8 +1,15 @@
-# Outputs
+<p align="center"><img src="assets/icon.png" width="128" alt="Outputs"></p>
 
-Звук Mac сразу в несколько выходов: Bluetooth и проводные наушники, колонки, AirPlay и HDMI. У каждого выхода своя громкость, задержка и эквалайзер, а Outputs держит их в синхроне.
+<h1 align="center">Outputs</h1>
 
-[English](README.md)
+<p align="center">Звук Mac сразу в несколько выходов: Bluetooth и проводные наушники, колонки, AirPlay и HDMI. У каждого выхода своя громкость, задержка и эквалайзер, а Outputs держит их в синхроне.</p>
+
+<p align="center">
+  <a href="https://github.com/theoron-apps/Outputs/releases/latest"><img src="https://img.shields.io/github/v/release/theoron-apps/Outputs?style=flat-square&label=&color=3f7561" alt="Release"></a>
+  <img src="https://img.shields.io/badge/macOS-14.2%2B-555?style=flat-square" alt="macOS 14.2+">
+</p>
+
+<p align="center">[English](README.md)</p>
 
 ## Возможности
 
