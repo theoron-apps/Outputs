@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/macOS-14.2%2B-555?style=flat-square" alt="macOS 14.2+">
 </p>
 
-<p align="center">[English](README.md)</p>
+<p align="center"><a href="README.md">English</a></p>
 
 ## Возможности
 
