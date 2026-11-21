@@ -65,7 +65,7 @@ struct AppsTab: View {
                 .frame(width: appWidth)
                 VStack(spacing: spacing) {
                     ForEach(Array(outputs.enumerated()), id: \.element) { index, uid in
-                        outputRow(uid, index: index, highlighted: hoveredOutput(width: width) == index)
+                        outputRow(uid, index: index, highlighted: hoveredOutput(width: width) == index, active: drag != nil)
                     }
                 }
                 .frame(width: outputWidth)
@@ -169,7 +169,7 @@ struct AppsTab: View {
     }
 
     private func outputPort(_ index: Int, width: CGFloat) -> CGPoint {
-        CGPoint(x: width - outputWidth + 19, y: CGFloat(index) * (rowHeight + spacing) + rowHeight / 2)
+        CGPoint(x: width - outputWidth + 21, y: CGFloat(index) * (rowHeight + spacing) + rowHeight / 2)
     }
 
     private func bezier(_ start: CGPoint, _ end: CGPoint, _ t: CGFloat) -> CGPoint {
@@ -245,10 +245,10 @@ struct AppsTab: View {
         }
     }
 
-    private func outputRow(_ uid: String, index: Int, highlighted: Bool) -> some View {
+    private func outputRow(_ uid: String, index: Int, highlighted: Bool, active: Bool) -> some View {
         let missing = model.devices.device(uid: uid) == nil
         return HStack(spacing: 9) {
-            JackView(size: 18)
+            JackView(size: 16, ring: Theme.cableColor(index), glow: active)
             Text(model.name(of: uid).uppercased())
                 .font(Theme.mono(10))
                 .lineLimit(1)

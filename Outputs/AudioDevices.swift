@@ -52,6 +52,7 @@ nonisolated struct AudioOutputDevice: Identifiable, Hashable, Sendable {
 
 nonisolated enum AudioDeviceReader {
     static func outputDevices() -> [AudioOutputDevice] {
+        dispatchPrecondition(condition: .onQueue(CoreAudioHardware.queue))
         var address = CoreAudioHardware.propertyAddress(kAudioHardwarePropertyDevices)
         var size: UInt32 = 0
         guard AudioObjectGetPropertyDataSize(CoreAudioHardware.systemObject, &address, 0, nil, &size) == noErr, size > 0 else {
@@ -92,6 +93,7 @@ nonisolated enum AudioDeviceReader {
     }
 
     static func streamChannels(_ id: AudioObjectID, scope: AudioObjectPropertyScope) -> [Int] {
+        dispatchPrecondition(condition: .onQueue(CoreAudioHardware.queue))
         var address = CoreAudioHardware.propertyAddress(kAudioDevicePropertyStreamConfiguration, scope: scope)
         var size: UInt32 = 0
         guard AudioObjectGetPropertyDataSize(id, &address, 0, nil, &size) == noErr, size > 0 else { return [] }
@@ -109,6 +111,7 @@ nonisolated enum AudioDeviceReader {
     }
 
     static func volume(of id: AudioObjectID) -> Float? {
+        dispatchPrecondition(condition: .onQueue(CoreAudioHardware.queue))
         if isMuted(id) {
             return 0
         }
@@ -126,6 +129,7 @@ nonisolated enum AudioDeviceReader {
     }
 
     static func isMuted(_ id: AudioObjectID) -> Bool {
+        dispatchPrecondition(condition: .onQueue(CoreAudioHardware.queue))
         var address = AudioObjectPropertyAddress(mSelector: kAudioDevicePropertyMute, mScope: kAudioObjectPropertyScopeOutput, mElement: kAudioObjectPropertyElementMain)
         guard AudioObjectHasProperty(id, &address) else { return false }
         var value = UInt32(0)
@@ -163,6 +167,7 @@ nonisolated enum AudioDeviceReader {
     }
 
     private static func firstStream(_ id: AudioObjectID, scope: AudioObjectPropertyScope) -> AudioObjectID? {
+        dispatchPrecondition(condition: .onQueue(CoreAudioHardware.queue))
         var address = CoreAudioHardware.propertyAddress(kAudioDevicePropertyStreams, scope: scope)
         var size: UInt32 = 0
         guard AudioObjectGetPropertyDataSize(id, &address, 0, nil, &size) == noErr, size > 0 else { return nil }
@@ -176,6 +181,7 @@ nonisolated enum AudioDeviceReader {
 final class AudioDeviceMonitor {
     private(set) var devices: [AudioOutputDevice] = []
     private(set) var defaultDevice: AudioObjectID?
+    private(set) var defaultDeviceUID: String?
     private(set) var masterVolume: Float = 1
 
     @ObservationIgnored var onChange: (() -> Void)?
@@ -185,10 +191,10 @@ final class AudioDeviceMonitor {
     @ObservationIgnored private var volumeListeners: [(AudioObjectID, AudioObjectPropertySelector, AudioObjectPropertyScope, AudioObjectPropertyElement, AudioObjectPropertyListenerBlock)] = []
     @ObservationIgnored private var rateListeners: [(AudioObjectID, AudioObjectPropertyListenerBlock)] = []
     @ObservationIgnored private var refreshTask: Task<Void, Never>?
-
-    var defaultDeviceUID: String? {
-        defaultDevice.flatMap { CoreAudioHardware.string($0, kAudioDevicePropertyDeviceUID) }
-    }
+    @ObservationIgnored private var isRefreshing = false
+    @ObservationIgnored private var refreshPending = false
+    @ObservationIgnored private var devicesPending = false
+    @ObservationIgnored private var notifyPending = false
 
     func start() {
         guard deviceListener == nil else { return }
@@ -215,17 +221,60 @@ final class AudioDeviceMonitor {
     }
 
     private func refresh() {
-        let fresh = AudioDeviceReader.outputDevices().sorted { lhs, rhs in
-            if lhs.kind == .builtIn, rhs.kind != .builtIn { return true }
-            if rhs.kind == .builtIn, lhs.kind != .builtIn { return false }
-            return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
+        requestRefresh(includeDevices: true, notify: false)
+    }
+
+    private func requestRefresh(includeDevices: Bool, notify: Bool) {
+        guard !isRefreshing else {
+            refreshPending = true
+            devicesPending = devicesPending || includeDevices
+            notifyPending = notifyPending || notify
+            return
         }
-        let changed = fresh != devices
-        devices = fresh
-        watchSampleRates()
-        refreshDefault(notify: false)
-        if changed {
-            onChange?()
+        isRefreshing = true
+        CoreAudioHardware.queue.async { [weak self] in
+            let fresh = includeDevices ? AudioDeviceReader.outputDevices().sorted { lhs, rhs in
+                if lhs.kind == .builtIn, rhs.kind != .builtIn { return true }
+                if rhs.kind == .builtIn, lhs.kind != .builtIn { return false }
+                return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
+            } : nil
+            let current = AudioDeviceReader.defaultOutputDevice()
+            let uid = current.flatMap { CoreAudioHardware.string($0, kAudioDevicePropertyDeviceUID) }
+            let volume = current.flatMap(AudioDeviceReader.volume(of:)) ?? 1
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                let changed = fresh.map { $0 != self.devices } ?? false
+                if let fresh {
+                    self.devices = fresh
+                    self.watchSampleRates()
+                }
+                let switched = current != self.defaultDevice
+                let volumeChanged = volume != self.masterVolume
+                self.defaultDevice = current
+                self.defaultDeviceUID = uid
+                self.masterVolume = volume
+                if switched {
+                    self.watchVolume()
+                }
+                if volumeChanged, notify {
+                    self.onVolumeChange?()
+                }
+                if switched, notify {
+                    self.onVolumeChange?()
+                }
+                if changed {
+                    self.onChange?()
+                }
+                self.isRefreshing = false
+                if self.refreshPending {
+                    let includeDevices = self.devicesPending
+                    let notify = self.notifyPending
+                    self.refreshPending = false
+                    self.devicesPending = false
+                    self.notifyPending = false
+                    self.requestRefresh(includeDevices: includeDevices, notify: notify)
+                }
+            }
         }
     }
 
@@ -241,22 +290,12 @@ final class AudioDeviceMonitor {
     }
 
     private func refreshDefault(notify: Bool = true) {
-        let current = AudioDeviceReader.defaultOutputDevice()
-        let switched = current != defaultDevice
-        if switched {
-            defaultDevice = current
-            watchVolume()
-        }
-        updateVolume(notify: notify)
-        if switched, notify {
-            onVolumeChange?()
-        }
+        requestRefresh(includeDevices: false, notify: notify)
     }
 
     private func watchVolume() {
         for (id, selector, scope, element, block) in volumeListeners {
-            var address = AudioObjectPropertyAddress(mSelector: selector, mScope: scope, mElement: element)
-            AudioObjectRemovePropertyListenerBlock(id, &address, .main, block)
+            CoreAudioHardware.removeListener(block, from: id, selector: selector, scope: scope, element: element)
         }
         volumeListeners = []
         guard let device = defaultDevice else { return }
@@ -268,24 +307,14 @@ final class AudioDeviceMonitor {
             (kAudioDevicePropertyMute, kAudioObjectPropertyElementMain)
         ]
         for (selector, element) in targets {
-            var address = AudioObjectPropertyAddress(mSelector: selector, mScope: scope, mElement: element)
-            guard AudioObjectHasProperty(device, &address) else { continue }
-            let block: AudioObjectPropertyListenerBlock = { [weak self] _, _ in
-                MainActor.assumeIsolated {
-                    self?.updateVolume(notify: true)
-                }
+            let block = CoreAudioHardware.addListener(to: device, selector: selector, scope: scope, element: element) { [weak self] in
+                self?.updateVolume(notify: true)
             }
-            AudioObjectAddPropertyListenerBlock(device, &address, .main, block)
             volumeListeners.append((device, selector, scope, element, block))
         }
     }
 
     private func updateVolume(notify: Bool) {
-        let value = defaultDevice.flatMap(AudioDeviceReader.volume(of:)) ?? 1
-        guard value != masterVolume else { return }
-        masterVolume = value
-        if notify {
-            onVolumeChange?()
-        }
+        refreshDefault(notify: notify)
     }
 }

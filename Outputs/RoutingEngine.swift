@@ -79,7 +79,7 @@ nonisolated final class RoutingEngine: @unchecked Sendable {
     private static let bufferFrames: UInt32 = 512
     private static let logger = Logger(subsystem: "devplaceholder.WAZ2022C.Outputs", category: "engine")
 
-    private let queue = DispatchQueue(label: "Outputs.Engine", qos: .userInitiated)
+    private let queue = CoreAudioHardware.queue
     private let shared = OSAllocatedUnfairLock(initialState: Shared())
     private var taps: [AudioObjectID] = []
     private var aggregateID = AudioObjectID(kAudioObjectUnknown)
@@ -120,7 +120,12 @@ nonisolated final class RoutingEngine: @unchecked Sendable {
 
     func stopNow() {
         shared.withLock { $0.generation += 1 }
-        queue.sync { teardown() }
+        let finished = DispatchSemaphore(value: 0)
+        queue.async { [self] in
+            teardown()
+            finished.signal()
+        }
+        _ = finished.wait(timeout: .now() + .milliseconds(1500))
     }
 
     func update(_ parameters: Parameters) {
@@ -145,6 +150,7 @@ nonisolated final class RoutingEngine: @unchecked Sendable {
     }
 
     private func build(_ plan: Plan) throws {
+        dispatchPrecondition(condition: .onQueue(queue))
         guard !plan.outputs.isEmpty, !plan.sources.isEmpty,
               plan.outputs.count <= Int(OD_MAX_OUTPUTS), plan.sources.count <= Int(OD_MAX_SOURCES) else {
             throw EngineError(step: "plan", status: kAudioHardwareIllegalOperationError)
@@ -245,6 +251,7 @@ nonisolated final class RoutingEngine: @unchecked Sendable {
     }
 
     private func disableDeviceInputs(streams: Int, firstTap: Int) {
+        dispatchPrecondition(condition: .onQueue(queue))
         guard streams > 0, firstTap > 0, let ioProcID else { return }
         let size = MemoryLayout<AudioHardwareIOProcStreamUsage>.size + max(streams - 1, 0) * MemoryLayout<UInt32>.size
         let raw = UnsafeMutableRawPointer.allocate(byteCount: size, alignment: MemoryLayout<AudioHardwareIOProcStreamUsage>.alignment)
@@ -264,6 +271,7 @@ nonisolated final class RoutingEngine: @unchecked Sendable {
     }
 
     private func teardown() {
+        dispatchPrecondition(condition: .onQueue(queue))
         var released = true
         if let ioProcID, aggregateID != kAudioObjectUnknown {
             AudioDeviceStop(aggregateID, ioProcID)

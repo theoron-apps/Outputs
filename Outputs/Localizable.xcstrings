@@ -1153,6 +1153,22 @@
         }
       }
     },
+    "Интерфейс больше не зависает, если звуковая служба macOS перестаёт отвечать: Outputs отпускает звук и сообщает об ошибке" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The interface no longer freezes when the macOS audio service stops responding: Outputs releases the sound and shows an error"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Интерфейс больше не зависает, если звуковая служба macOS перестаёт отвечать: Outputs отпускает звук и сообщает об ошибке"
+          }
+        }
+      }
+    },
     "КАК В СИСТЕМЕ" : {
       "localizations" : {
         "en" : {
@@ -1229,6 +1245,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "КУДА ИГРАЕТ КАЖДОЕ ПРИЛОЖЕНИЕ"
+          }
+        }
+      }
+    },
+    "Кабели на вкладке «Приложения» можно схватить и выдернуть или перекинуть на другой выход" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cables on the Apps tab can be grabbed and pulled out or moved to another output"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Кабели на вкладке «Приложения» можно схватить и выдернуть или перекинуть на другой выход"
           }
         }
       }
@@ -1761,6 +1793,22 @@
         }
       }
     },
+    "Понятно, какой провод куда: кольцо гнезда — цвета своего кабеля, а пока тянете штекер, его гнездо светится и ведёт к себе пунктиром" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It's clear which cable goes where: each jack's ring matches its cable, and while you drag a plug its jack glows and draws a dashed guide"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Понятно, какой провод куда: кольцо гнезда — цвета своего кабеля, а пока тянете штекер, его гнездо светится и ведёт к себе пунктиром"
+          }
+        }
+      }
+    },
     "Провода живые: провисают, качаются, их можно схватить мышью, а по играющим бегут импульсы" : {
       "localizations" : {
         "en" : {
@@ -1949,6 +1997,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "СОХРАНЁННЫЕ НАБОРЫ"
+          }
+        }
+      }
+    },
+    "СЮДА" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HERE"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "СЮДА"
           }
         }
       }

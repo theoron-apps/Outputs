@@ -20,6 +20,7 @@ nonisolated enum AudioProcessReader {
     }
 
     static func ownProcess() -> AudioObjectID? {
+        dispatchPrecondition(condition: .onQueue(CoreAudioHardware.queue))
         var pid = ProcessInfo.processInfo.processIdentifier
         var address = CoreAudioHardware.propertyAddress(kAudioHardwarePropertyTranslatePIDToProcessObject)
         var object = AudioObjectID(kAudioObjectUnknown)
@@ -60,11 +61,15 @@ nonisolated enum AudioProcessReader {
 @Observable
 final class AudioProcessMonitor {
     private(set) var apps: [AudioApp] = []
+    private(set) var ownProcess: AudioObjectID?
+    private(set) var processesByBundleID: [String: [AudioObjectID]] = [:]
 
     @ObservationIgnored var onChange: (() -> Void)?
     @ObservationIgnored private var listener: AudioObjectPropertyListenerBlock?
     @ObservationIgnored private var pollTask: Task<Void, Never>?
     @ObservationIgnored private var processIDs: Set<AudioObjectID> = []
+    @ObservationIgnored private var isRefreshing = false
+    @ObservationIgnored private var refreshPending = false
 
     func start() {
         guard listener == nil else { return }
@@ -83,27 +88,53 @@ final class AudioProcessMonitor {
         NSWorkspace.shared.urlForApplication(withBundleIdentifier: bundleID).map { NSWorkspace.shared.icon(forFile: $0.path) }
     }
 
+    func processes(for bundleID: String) -> [AudioObjectID] {
+        processesByBundleID[bundleID] ?? []
+    }
+
     private func refresh() {
-        let own = Bundle.main.bundleIdentifier
-        let objects = CoreAudioHardware.processObjects()
-        var playing: [String: Bool] = [:]
-        for object in objects {
-            guard let identifier = AudioProcessReader.ownerBundleID(of: object), identifier != own else { continue }
-            playing[identifier] = (playing[identifier] ?? false) || AudioProcessReader.isPlaying(object)
+        guard !isRefreshing else {
+            refreshPending = true
+            return
         }
-        let regular = Set(NSWorkspace.shared.runningApplications.filter { $0.activationPolicy == .regular }.compactMap(\.bundleIdentifier))
-        let fresh = playing.filter { regular.contains($0.key) }.map { AudioApp(bundleID: $0.key, name: AudioProcessReader.displayName(of: $0.key), isPlaying: $0.value) }
-            .sorted { lhs, rhs in
-                if lhs.isPlaying != rhs.isPlaying { return lhs.isPlaying }
-                return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
+        isRefreshing = true
+        CoreAudioHardware.queue.async { [weak self] in
+            let own = Bundle.main.bundleIdentifier
+            let objects = CoreAudioHardware.processObjects()
+            let ownProcess = AudioProcessReader.ownProcess()
+            var byBundleID: [String: [AudioObjectID]] = [:]
+            var playing: [String: Bool] = [:]
+            for object in objects {
+                guard let identifier = AudioProcessReader.ownerBundleID(of: object) else { continue }
+                byBundleID[identifier, default: []].append(object)
+                guard identifier != own else { continue }
+                playing[identifier] = (playing[identifier] ?? false) || AudioProcessReader.isPlaying(object)
             }
-        let idsChanged = Set(objects) != processIDs
-        processIDs = Set(objects)
-        if fresh != apps {
-            apps = fresh
-        }
-        if idsChanged {
-            onChange?()
+            let regular = Set(NSWorkspace.shared.runningApplications.filter { $0.activationPolicy == .regular }.compactMap(\.bundleIdentifier))
+            let fresh = playing.filter { regular.contains($0.key) }.map { AudioApp(bundleID: $0.key, name: AudioProcessReader.displayName(of: $0.key), isPlaying: $0.value) }
+                .sorted { lhs, rhs in
+                    if lhs.isPlaying != rhs.isPlaying { return lhs.isPlaying }
+                    return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
+                }
+            let processes = byBundleID
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                let idsChanged = Set(objects) != self.processIDs || ownProcess != self.ownProcess || processes != self.processesByBundleID
+                self.processIDs = Set(objects)
+                self.ownProcess = ownProcess
+                self.processesByBundleID = processes
+                if fresh != self.apps {
+                    self.apps = fresh
+                }
+                if idsChanged {
+                    self.onChange?()
+                }
+                self.isRefreshing = false
+                if self.refreshPending {
+                    self.refreshPending = false
+                    self.refresh()
+                }
+            }
         }
     }
 }

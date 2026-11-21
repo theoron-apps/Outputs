@@ -28,6 +28,7 @@ final class AppModel {
     @ObservationIgnored private var meterTask: Task<Void, Never>?
     @ObservationIgnored private var saveTask: Task<Void, Never>?
     @ObservationIgnored private var retryTask: Task<Void, Never>?
+    @ObservationIgnored private var startupTask: Task<Void, Never>?
     @ObservationIgnored private var request = 0
     @ObservationIgnored var onStateChange: (() -> Void)?
 
@@ -71,6 +72,9 @@ final class AppModel {
     }
 
     func shutdown() {
+        request += 1
+        retryTask?.cancel()
+        startupTask?.cancel()
         engine.stopNow()
     }
 
@@ -309,7 +313,7 @@ final class AppModel {
     }
 
     private func makePlan() -> RoutingEngine.Plan? {
-        guard let own = AudioProcessReader.ownProcess() else { return nil }
+        guard let own = processes.ownProcess else { return nil }
         let outputs = activeOutputs.prefix(Int(OD_MAX_OUTPUTS)).map {
             RoutingEngine.Output(uid: $0.uid, device: $0.id, isWireless: $0.isWireless, sampleRate: $0.sampleRate)
         }
@@ -320,7 +324,7 @@ final class AppModel {
         for bundleID in custom.sorted() where sources.count < Int(OD_MAX_SOURCES) {
             let rule = settings.appRoutes[bundleID]
             let targets = rule.map { $0.compactMap { indices[$0] }.sorted() } ?? Array(outputs.indices)
-            let objects = AudioProcessReader.processes(for: bundleID).filter { $0 != own }
+            let objects = processes.processes(for: bundleID).filter { $0 != own }
             guard !objects.isEmpty, !targets.isEmpty else { continue }
             excluded.append(contentsOf: objects)
             sources.append(RoutingEngine.Source(bundleID: bundleID, processes: objects, isGlobal: false, outputs: targets))
@@ -345,6 +349,9 @@ final class AppModel {
             return
         }
         guard let plan = makePlan() else {
+            request += 1
+            startupTask?.cancel()
+            startupTask = nil
             runningPlan = nil
             engine.stop()
             setStatus(.starting)
@@ -360,6 +367,7 @@ final class AppModel {
             pushParameters()
             return
         }
+        startupTask?.cancel()
         runningPlan = plan
         request += 1
         let current = request
@@ -375,9 +383,21 @@ final class AppModel {
                 }
             }
         }
+        startupTask = Task { [weak self] in
+            try? await Task.sleep(for: .seconds(8))
+            guard !Task.isCancelled, let self, self.request == current, self.status == .starting else { return }
+            self.request += 1
+            self.runningPlan = nil
+            self.engine.stop()
+            self.setStatus(.failed("timeout"))
+        }
     }
 
     private func setStatus(_ new: Status) {
+        if new != .starting {
+            startupTask?.cancel()
+            startupTask = nil
+        }
         status = new
         if new == .running {
             startMeters()

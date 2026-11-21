@@ -9,6 +9,16 @@ struct ChangelogRelease: Identifiable {
 
     static let all: [ChangelogRelease] = [
         ChangelogRelease(
+            version: "1.1",
+            added: [
+                String(localized: "Понятно, какой провод куда: кольцо гнезда — цвета своего кабеля, а пока тянете штекер, его гнездо светится и ведёт к себе пунктиром")
+            ],
+            changed: [
+                String(localized: "Интерфейс больше не зависает, если звуковая служба macOS перестаёт отвечать: Outputs отпускает звук и сообщает об ошибке"),
+                String(localized: "Кабели на вкладке «Приложения» можно схватить и выдернуть или перекинуть на другой выход")
+            ]
+        ),
+        ChangelogRelease(
             version: "1.0",
             added: [
                 String(localized: "Звук Mac играет сразу в несколько выходов: Bluetooth и проводные наушники, колонки, AirPlay и HDMI"),

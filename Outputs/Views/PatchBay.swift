@@ -275,6 +275,11 @@ final class RopeField {
         ropes[id]?.points
     }
 
+    fileprivate var grabbedEnd: (id: String, point: CGPoint)? {
+        guard let grab, let rope = ropes[grab.id], grab.index == rope.points.count - 1 else { return nil }
+        return (grab.id, grabPoint)
+    }
+
     fileprivate func isFree(_ id: String) -> Bool {
         ropes[id]?.free ?? false
     }
@@ -411,7 +416,7 @@ struct PatchCanvas: View, Equatable {
     }
 
     var body: some View {
-        TimelineView(.animation(paused: !field.isActive && live.isEmpty)) { timeline in
+        TimelineView(.animation(paused: !field.isActive && live.isEmpty && !cables.contains { $0.free && $0.pluggable })) { timeline in
             Canvas { context, _ in
                 field.sync(anchors, floor: layout.height - 9, width: layout.width)
                 if field.isActive {
@@ -432,8 +437,34 @@ struct PatchCanvas: View, Equatable {
 
     private func draw(in context: inout GraphicsContext, time: TimeInterval) {
         drawJack(in: &context, at: layout.sourceJack, radius: 10)
-        for index in cables.indices {
-            drawJack(in: &context, at: layout.outputJack(index), radius: 9)
+        let grabbed = field.grabbedEnd
+        let pulse = 0.5 + 0.5 * sin(time * 6)
+        for (index, cable) in cables.enumerated() {
+            let center = layout.outputJack(index)
+            let color = Theme.cableColor(index)
+            let isTarget = grabbed?.id == cable.id && cable.pluggable
+            let waiting = grabbed == nil && cable.free && cable.pluggable
+            let dimmed = grabbed != nil && !isTarget
+            if isTarget || waiting {
+                let glow = isTarget ? 15 + 4 * pulse : 13 + 2 * pulse
+                context.drawLayer { layer in
+                    layer.addFilter(.blur(radius: 5))
+                    layer.fill(Path(ellipseIn: CGRect(x: center.x - glow, y: center.y - glow, width: glow * 2, height: glow * 2)), with: .color(color.opacity(isTarget ? 0.55 : 0.25 + 0.2 * pulse)))
+                }
+            }
+            drawJack(in: &context, at: center, radius: 9)
+            let ring = Path(ellipseIn: CGRect(x: center.x - 11.5, y: center.y - 11.5, width: 23, height: 23))
+            context.stroke(ring, with: .color(color.opacity(dimmed ? 0.25 : 0.95)), lineWidth: 2.4)
+            if dimmed {
+                context.fill(Path(ellipseIn: CGRect(x: center.x - 10, y: center.y - 10, width: 20, height: 20)), with: .color(.black.opacity(0.45)))
+            }
+            if isTarget, let grabbed {
+                var guide = Path()
+                guide.move(to: grabbed.point)
+                guide.addLine(to: CGPoint(x: center.x - layout.plugLength, y: center.y))
+                context.stroke(guide, with: .color(color.opacity(0.8)), style: StrokeStyle(lineWidth: 1.6, lineCap: .round, dash: [3, 4], dashPhase: CGFloat(-time * 30)))
+                context.draw(Text("СЮДА").font(Theme.mono(8, .bold)).foregroundStyle(color), at: CGPoint(x: center.x, y: center.y + 19))
+            }
         }
         for (index, cable) in cables.enumerated().reversed() {
             guard let points = field.points(cable.id), points.count > 1 else { continue }
@@ -517,6 +548,8 @@ struct PatchCanvas: View, Equatable {
 
 struct JackView: View {
     var size: CGFloat = 18
+    var ring: Color?
+    var glow = false
 
     var body: some View {
         ZStack {
@@ -527,6 +560,14 @@ struct JackView: View {
         .overlay(Circle().strokeBorder(Color.black.opacity(0.35), lineWidth: 0.6))
         .frame(width: size, height: size)
         .shadow(color: .black.opacity(0.5), radius: 1.5, y: 1.2)
+        .padding(ring == nil ? 0 : 3)
+        .overlay {
+            if let ring {
+                Circle().strokeBorder(ring, lineWidth: 2.2)
+                    .shadow(color: ring.opacity(glow ? 0.9 : 0), radius: glow ? 6 : 0)
+            }
+        }
+        .animation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true), value: glow)
     }
 }
 

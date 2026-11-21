@@ -3,6 +3,7 @@ import Foundation
 import os
 
 nonisolated enum CoreAudioHardware {
+    static let queue = DispatchQueue(label: "Outputs.CoreAudio", qos: .userInitiated)
     static let systemObject = AudioObjectID(kAudioObjectSystemObject)
     private static let bundleIdentifiers = OSAllocatedUnfairLock(initialState: [AudioObjectID: String]())
 
@@ -23,6 +24,7 @@ nonisolated enum CoreAudioHardware {
         scope: AudioObjectPropertyScope = kAudioObjectPropertyScopeGlobal,
         initial: T
     ) -> T? {
+        dispatchPrecondition(condition: .onQueue(queue))
         var address = propertyAddress(selector, scope: scope)
         var size = UInt32(MemoryLayout<T>.size)
         var result = initial
@@ -37,6 +39,7 @@ nonisolated enum CoreAudioHardware {
         _ selector: AudioObjectPropertySelector,
         scope: AudioObjectPropertyScope = kAudioObjectPropertyScopeGlobal
     ) -> Bool {
+        dispatchPrecondition(condition: .onQueue(queue))
         var address = propertyAddress(selector, scope: scope)
         guard AudioObjectHasProperty(object, &address) else { return false }
         var settable = DarwinBoolean(false)
@@ -50,6 +53,7 @@ nonisolated enum CoreAudioHardware {
         _ selector: AudioObjectPropertySelector,
         scope: AudioObjectPropertyScope = kAudioObjectPropertyScopeGlobal
     ) -> Bool {
+        dispatchPrecondition(condition: .onQueue(queue))
         var address = propertyAddress(selector, scope: scope)
         var data = newValue
         let size = UInt32(MemoryLayout<T>.size)
@@ -59,6 +63,7 @@ nonisolated enum CoreAudioHardware {
     }
 
     static func string(_ object: AudioObjectID, _ selector: AudioObjectPropertySelector) -> String? {
+        dispatchPrecondition(condition: .onQueue(queue))
         var address = propertyAddress(selector)
         var size = UInt32(MemoryLayout<Unmanaged<CFString>?>.size)
         var result: Unmanaged<CFString>?
@@ -69,6 +74,7 @@ nonisolated enum CoreAudioHardware {
     }
 
     static func processObjects() -> [AudioObjectID] {
+        dispatchPrecondition(condition: .onQueue(queue))
         var address = propertyAddress(kAudioHardwarePropertyProcessObjectList)
         var size: UInt32 = 0
         guard AudioObjectGetPropertyDataSize(systemObject, &address, 0, nil, &size) == noErr else {
@@ -126,15 +132,19 @@ nonisolated enum CoreAudioHardware {
         to object: AudioObjectID,
         selector: AudioObjectPropertySelector,
         scope: AudioObjectPropertyScope = kAudioObjectPropertyScopeGlobal,
-        handler: @escaping @MainActor () -> Void
+        element: AudioObjectPropertyElement = kAudioObjectPropertyElementMain,
+        handler: @escaping @MainActor @Sendable () -> Void
     ) -> AudioObjectPropertyListenerBlock {
-        var address = propertyAddress(selector, scope: scope)
         let block: AudioObjectPropertyListenerBlock = { _, _ in
-            MainActor.assumeIsolated {
+            DispatchQueue.main.async {
                 handler()
             }
         }
-        AudioObjectAddPropertyListenerBlock(object, &address, .main, block)
+        queue.async {
+            var address = AudioObjectPropertyAddress(mSelector: selector, mScope: scope, mElement: element)
+            guard AudioObjectHasProperty(object, &address) else { return }
+            AudioObjectAddPropertyListenerBlock(object, &address, queue, block)
+        }
         return block
     }
 
@@ -142,9 +152,12 @@ nonisolated enum CoreAudioHardware {
         _ block: @escaping AudioObjectPropertyListenerBlock,
         from object: AudioObjectID,
         selector: AudioObjectPropertySelector,
-        scope: AudioObjectPropertyScope = kAudioObjectPropertyScopeGlobal
+        scope: AudioObjectPropertyScope = kAudioObjectPropertyScopeGlobal,
+        element: AudioObjectPropertyElement = kAudioObjectPropertyElementMain
     ) {
-        var address = propertyAddress(selector, scope: scope)
-        AudioObjectRemovePropertyListenerBlock(object, &address, .main, block)
+        queue.async {
+            var address = AudioObjectPropertyAddress(mSelector: selector, mScope: scope, mElement: element)
+            AudioObjectRemovePropertyListenerBlock(object, &address, queue, block)
+        }
     }
 }
