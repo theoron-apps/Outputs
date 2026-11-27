@@ -49,6 +49,7 @@ struct EqualizerTab: View {
                         .foregroundStyle(Theme.muted)
                     BandSlider(value: gains[safe: index] ?? 0, highlighted: index == 0) { value in
                         var updated = model.outputSettings(uid).equalizer
+                        updated += Array(repeating: 0, count: max(Self.bands.count - updated.count, 0))
                         updated[index] = value
                         model.setEqualizer(updated, for: uid)
                     }

@@ -9,6 +9,16 @@ struct ChangelogRelease: Identifiable {
 
     static let all: [ChangelogRelease] = [
         ChangelogRelease(
+            version: "1.1.1",
+            added: [],
+            changed: [
+                String(localized: "Outputs больше не закрывается от случайного ⌘Q: когда панель или окно закрываются, фокус возвращается приложению, в котором вы работали"),
+                String(localized: "⌘, открывает настройки Outputs, а не пустое окно"),
+                String(localized: "Outputs меньше нагружает процессор в фоне"),
+                String(localized: "Исправлено редкое падение при необычных значениях задержки от драйвера устройства")
+            ]
+        ),
+        ChangelogRelease(
             version: "1.1",
             added: [
                 String(localized: "Понятно, какой провод куда: кольцо гнезда — цвета своего кабеля, а пока тянете штекер, его гнездо светится и ведёт к себе пунктиром")

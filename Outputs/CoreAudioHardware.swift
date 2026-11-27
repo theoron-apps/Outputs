@@ -107,25 +107,11 @@ nonisolated enum CoreAudioHardware {
         }
     }
 
-    static func processObjects(matchingBundleIdentifier bundleIdentifier: String) -> [AudioObjectID] {
-        processObjects(matchingBundleIdentifiers: [bundleIdentifier])
-    }
-
-    static func processObjects(matchingBundleIdentifiers identifiers: [String]) -> [AudioObjectID] {
-        guard !identifiers.isEmpty else { return [] }
-        let processes = processObjects()
-        return processes.filter { process in
-            guard let identifier = self.bundleIdentifier(of: process) else { return false }
-            return identifiers.contains { identifier == $0 || identifier.hasPrefix($0 + ".") }
-        }.sorted()
-    }
-
-    static func defaultOutputDeviceUID() -> String? {
-        guard let device = value(systemObject, kAudioHardwarePropertyDefaultSystemOutputDevice, initial: AudioObjectID(kAudioObjectUnknown)),
-              device != kAudioObjectUnknown else {
-            return nil
+    static func forgetBundleIdentifiers(except processes: [AudioObjectID]) {
+        let alive = Set(processes)
+        bundleIdentifiers.withLock { cache in
+            cache = cache.filter { alive.contains($0.key) }
         }
-        return string(device, kAudioDevicePropertyDeviceUID)
     }
 
     static func addListener(

@@ -29,32 +29,67 @@ nonisolated enum AudioProcessReader {
         return status == noErr && object != kAudioObjectUnknown ? object : nil
     }
 
-    static func ownerBundleID(of process: AudioObjectID) -> String? {
-        if let identifier = CoreAudioHardware.bundleIdentifier(of: process), identifier.hasPrefix("com.apple.WebKit"),
-           NSWorkspace.shared.runningApplications.contains(where: { $0.bundleIdentifier == "com.apple.Safari" }) {
+    static func ownerBundleID(of process: AudioObjectID, running: RunningApps) -> String? {
+        let identifier = CoreAudioHardware.bundleIdentifier(of: process)
+        if let identifier, identifier.hasPrefix("com.apple.WebKit"), running.contains("com.apple.Safari") {
             return "com.apple.Safari"
         }
-        if let pid = pid(of: process), let app = NSRunningApplication(processIdentifier: pid), app.activationPolicy != .prohibited,
-           let identifier = app.bundleIdentifier {
-            return identifier
+        if let pid = pid(of: process), let owner = running.bundleID(of: pid) {
+            return owner
         }
-        guard let identifier = CoreAudioHardware.bundleIdentifier(of: process) else { return nil }
-        let running = NSWorkspace.shared.runningApplications.compactMap(\.bundleIdentifier)
-        return running.filter { identifier.hasPrefix($0 + ".") }.max { $0.count < $1.count } ?? identifier
+        guard let identifier else { return nil }
+        return running.identifiers.filter { identifier.hasPrefix($0 + ".") }.max { $0.count < $1.count } ?? identifier
     }
 
-    static func processes(for bundleID: String) -> [AudioObjectID] {
-        CoreAudioHardware.processObjects().filter { ownerBundleID(of: $0) == bundleID }
-    }
-
-    static func displayName(of bundleID: String) -> String {
-        if let app = NSRunningApplication.runningApplications(withBundleIdentifier: bundleID).first, let name = app.localizedName {
+    static func displayName(of bundleID: String, running: RunningApps? = nil) -> String {
+        if let name = running?.name(of: bundleID) ?? NSRunningApplication.runningApplications(withBundleIdentifier: bundleID).first?.localizedName {
             return name
         }
         if let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: bundleID) {
             return FileManager.default.displayName(atPath: url.path).replacingOccurrences(of: ".app", with: "")
         }
         return bundleID.split(separator: ".").last.map(String.init) ?? bundleID
+    }
+}
+
+nonisolated final class RunningApps {
+    private let apps: [(identifier: String, app: NSRunningApplication)]
+    private let byPID: [pid_t: (identifier: String, app: NSRunningApplication)]
+    private var policies: [pid_t: NSApplication.ActivationPolicy] = [:]
+    let identifiers: [String]
+
+    init() {
+        apps = NSWorkspace.shared.runningApplications.compactMap { app in
+            app.bundleIdentifier.map { ($0, app) }
+        }
+        byPID = Dictionary(apps.map { ($0.app.processIdentifier, $0) }, uniquingKeysWith: { first, _ in first })
+        identifiers = apps.map(\.identifier)
+    }
+
+    func contains(_ bundleID: String) -> Bool {
+        apps.contains { $0.identifier == bundleID }
+    }
+
+    func bundleID(of pid: pid_t) -> String? {
+        guard let entry = byPID[pid], policy(of: entry.app) != .prohibited else { return nil }
+        return entry.identifier
+    }
+
+    func isRegular(_ bundleID: String) -> Bool {
+        apps.contains { $0.identifier == bundleID && policy(of: $0.app) == .regular }
+    }
+
+    func name(of bundleID: String) -> String? {
+        apps.first { $0.identifier == bundleID }?.app.localizedName
+    }
+
+    private func policy(of app: NSRunningApplication) -> NSApplication.ActivationPolicy {
+        if let policy = policies[app.processIdentifier] {
+            return policy
+        }
+        let policy = app.activationPolicy
+        policies[app.processIdentifier] = policy
+        return policy
     }
 }
 
@@ -102,16 +137,17 @@ final class AudioProcessMonitor {
             let own = Bundle.main.bundleIdentifier
             let objects = CoreAudioHardware.processObjects()
             let ownProcess = AudioProcessReader.ownProcess()
+            let running = RunningApps()
+            CoreAudioHardware.forgetBundleIdentifiers(except: objects)
             var byBundleID: [String: [AudioObjectID]] = [:]
             var playing: [String: Bool] = [:]
             for object in objects {
-                guard let identifier = AudioProcessReader.ownerBundleID(of: object) else { continue }
+                guard let identifier = AudioProcessReader.ownerBundleID(of: object, running: running) else { continue }
                 byBundleID[identifier, default: []].append(object)
                 guard identifier != own else { continue }
                 playing[identifier] = (playing[identifier] ?? false) || AudioProcessReader.isPlaying(object)
             }
-            let regular = Set(NSWorkspace.shared.runningApplications.filter { $0.activationPolicy == .regular }.compactMap(\.bundleIdentifier))
-            let fresh = playing.filter { regular.contains($0.key) }.map { AudioApp(bundleID: $0.key, name: AudioProcessReader.displayName(of: $0.key), isPlaying: $0.value) }
+            let fresh = playing.filter { running.isRegular($0.key) }.map { AudioApp(bundleID: $0.key, name: AudioProcessReader.displayName(of: $0.key, running: running), isPlaying: $0.value) }
                 .sorted { lhs, rhs in
                     if lhs.isPlaying != rhs.isPlaying { return lhs.isPlaying }
                     return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending

@@ -385,6 +385,22 @@
         }
       }
     },
+    "Outputs больше не закрывается от случайного ⌘Q: когда панель или окно закрываются, фокус возвращается приложению, в котором вы работали" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs no longer quits on a stray ⌘Q: when the panel or a window closes, focus goes back to the app you were using"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs больше не закрывается от случайного ⌘Q: когда панель или окно закрываются, фокус возвращается приложению, в котором вы работали"
+          }
+        }
+      }
+    },
     "Outputs закроется и откроет образ диска. Перетащите Outputs в папку «Программы» и выберите «Заменить»: ваши настройки сохранятся." : {
       "localizations" : {
         "en" : {
@@ -413,6 +429,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Outputs играет звук Mac сразу в несколько наушников и колонок: Bluetooth, проводные, AirPlay, HDMI. У каждого своя громкость, задержка и эквалайзер."
+          }
+        }
+      }
+    },
+    "Outputs меньше нагружает процессор в фоне" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs uses less CPU in the background"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outputs меньше нагружает процессор в фоне"
           }
         }
       }
@@ -1165,6 +1197,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Интерфейс больше не зависает, если звуковая служба macOS перестаёт отвечать: Outputs отпускает звук и сообщает об ошибке"
+          }
+        }
+      }
+    },
+    "Исправлено редкое падение при необычных значениях задержки от драйвера устройства" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fixed a rare crash when a device driver reports unusual latency values"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Исправлено редкое падение при необычных значениях задержки от драйвера устройства"
           }
         }
       }
@@ -2333,6 +2381,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ЯРКО"
+          }
+        }
+      }
+    },
+    "⌘, открывает настройки Outputs, а не пустое окно" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘, opens Outputs settings instead of an empty window"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘, открывает настройки Outputs, а не пустое окно"
           }
         }
       }

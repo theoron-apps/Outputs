@@ -163,7 +163,7 @@ nonisolated enum AudioDeviceReader {
         let stream = firstStream(id, scope: scope).flatMap {
             CoreAudioHardware.value($0, kAudioStreamPropertyLatency, initial: UInt32(0))
         } ?? 0
-        return Double(device + safety + buffer + stream) / sampleRate * 1000
+        return (Double(device) + Double(safety) + Double(buffer) + Double(stream)) / sampleRate * 1000
     }
 
     private static func firstStream(_ id: AudioObjectID, scope: AudioObjectPropertyScope) -> AudioObjectID? {

@@ -8,5 +8,11 @@ struct OutputsApp: App {
         Settings {
             EmptyView()
         }
+        .commands {
+            CommandGroup(replacing: .appSettings) {
+                Button("Настройки…") { delegate.router.openSettings(.outputs) }
+                    .keyboardShortcut(",")
+            }
+        }
     }
 }

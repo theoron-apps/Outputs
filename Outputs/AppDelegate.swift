@@ -51,7 +51,7 @@ final class WindowRouter {
     }
 }
 
-final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
+final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSPopoverDelegate {
     let model = AppModel()
     let router = WindowRouter()
 
@@ -59,6 +59,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     private let popover = NSPopover()
     private var pulseTimer: Timer?
     private var pulsePhase: CGFloat = 0
+    private var previousApp: NSRunningApplication?
     fileprivate var settingsWindow: NSWindow?
     fileprivate var testWindow: NSWindow?
     fileprivate var onboardingWindow: NSWindow?
@@ -73,6 +74,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
         popover.behavior = .transient
         popover.animates = true
+        popover.delegate = self
         popover.contentViewController = NSHostingController(rootView: PopoverView(model: model, router: router))
 
         model.onStateChange = { [weak self] in self?.refreshIcon() }
@@ -124,7 +126,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         if popover.isShown {
             popover.performClose(nil)
         } else {
-            NSApp.activate()
+            activate()
             let match = NSApp.effectiveAppearance.bestMatch(from: [.aqua, .darkAqua]) ?? .darkAqua
             popover.appearance = NSApp.appearance ?? NSAppearance(named: match)
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
@@ -217,7 +219,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         resizable: Bool,
         content: @escaping () -> Content
     ) {
-        NSApp.activate()
+        activate()
         if let window = self[keyPath: keyPath] {
             window.makeKeyAndOrderFront(nil)
             return
@@ -244,6 +246,30 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         window.makeKeyAndOrderFront(nil)
     }
 
+    private func activate() {
+        if let front = NSWorkspace.shared.frontmostApplication, front != NSRunningApplication.current {
+            previousApp = front
+        }
+        NSApp.activate()
+    }
+
+    private func returnFocusIfIdle() {
+        DispatchQueue.main.async { [self] in
+            guard NSApp.isActive, !popover.isShown, settingsWindow == nil, testWindow == nil, onboardingWindow == nil else { return }
+            if let previousApp, !previousApp.isTerminated {
+                NSApp.yieldActivation(to: previousApp)
+                previousApp.activate()
+            } else {
+                NSApp.deactivate()
+            }
+            previousApp = nil
+        }
+    }
+
+    func popoverDidClose(_ notification: Notification) {
+        returnFocusIfIdle()
+    }
+
     func windowWillClose(_ notification: Notification) {
         guard let window = notification.object as? NSWindow else { return }
         if window == testWindow {
@@ -255,5 +281,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             onboardingWindow = nil
             model.finishOnboarding()
         }
+        returnFocusIfIdle()
     }
 }
