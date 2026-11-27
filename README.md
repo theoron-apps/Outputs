@@ -45,3 +45,7 @@ Scripts/test_dsp.sh
 ## Privacy
 
 Outputs never records or saves audio and doesn't send anything anywhere. The only network request is a daily check for new versions on GitHub.
+
+## License
+
+Outputs is free and open source under the [MIT License](LICENSE). © 2026 Theoron.
