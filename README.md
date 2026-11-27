@@ -48,4 +48,4 @@ Outputs never records or saves audio and doesn't send anything anywhere. The onl
 
 ## License
 
-Outputs is free and open source under the [MIT License](LICENSE). © 2026 Theoron.
+Outputs is free to download and use. Its source code is public under the [PolyForm Noncommercial License 1.0.0](LICENSE): you may read, build and change it for personal and other noncommercial use, but you may not sell it or use it commercially. © 2026 Theoron.
